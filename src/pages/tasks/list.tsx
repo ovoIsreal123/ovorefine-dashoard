@@ -99,14 +99,7 @@ export const List = ({ children }: React.PropsWithChildren) => {
     };
   }, [tasks, stages]);
 
-  const { mutate: updateTask } = useUpdate<Task, HttpError, TaskUpdateInput>({ 
-    resource: "tasks",
-    mutationMode: "optimistic",
-    successNotification: false,
-    meta: {
-      gqlMutation: UPDATE_TASK_STAGE_MUTATION,
-    },
-  });
+
 
   const handleOnDragEnd = (event: DragEndEvent) => {
     let stageId = event.over?.id as undefined | string | null;
@@ -231,3 +224,7 @@ const PageSkeleton = () => {
     </KanbanBoardContainer>
   );
 };
+function updateTask(arg0: { id: string; values: { stageId: string | null | undefined; }; resource: string; }) {
+  throw new Error("Function not implemented.");
+}
+
